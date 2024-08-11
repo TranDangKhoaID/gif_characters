@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:gif_skill/routes.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -10,6 +12,13 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: AppRoute.generateRoute,
+      //locale: const Locale('vi', 'VI'),
+      navigatorKey: Get.key,
+      initialRoute: AppRoute.splashScreen,
+      //builder: EasyLoading.init(),
+    );
   }
 }
