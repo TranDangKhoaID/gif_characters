@@ -34,18 +34,23 @@ List<CharacterModel> characters = [
         'https://66.media.tumblr.com/4f6e8d2395f3b913a67613ba6101d568/tumblr_mpvv1jre3q1rfjowdo1_500.gif',
     avatar:
         'https://upload.wikimedia.org/wikipedia/vi/thumb/a/af/Son_Goku_YoungAdult.PNG/300px-Son_Goku_YoungAdult.PNG',
-    description: 'Hiho',
+    description:
+        'Son Goku (孫悟空そんごくう (Tôn Ngộ Không) Son Gokū?), tên khai sinh là Kakarot (カカロット Kakarotto?) là nhân vật chính trong series manga Dragon Ball của Toriyama Akira. Cậu là cháu trai nuôi của ông nội Gohan, chồng của Chi-Chi, bố của Gohan và Goten, ông nội của Pan và trong Dragon Ball GT là cụ cố của Goku Jr. Thầy dạy của cậu có Quy lão, Kaio và Whis. Son Goku được đánh giá là nhân vật giả tưởng mạnh nhất mọi thời đại.',
     skills: [
       CharacterSkillModel(
         name: 'Giới Vương Quyền',
         gif: 'https://media.tenor.com/MiYGnIcUIisAAAAC/goku-kaio.gif',
         type: 'skill',
+        describe:
+            'kỹ thuật đẩy khí trong cơ thể giúp tăng nhiều lần sức mạnh, sức bền, tốc độ và phản xạ bản thân đổi lại là áp lực như nhẹ thì hao tổn nội lực với căng cơ, nặng thì tàn phế',
       ),
       CharacterSkillModel(
         name: 'Nguyên Khí Ngọc',
         gif:
             'https://th.bing.com/th/id/R.f2595ceedc68d4b090ade70dcf7fa53c?rik=DWaWm0IBBzEHZA&pid=ImgRaw&r=0',
         type: 'skill',
+        describe:
+            'Goku sẽ đưa hai tay lên trời, giao tiếp với thiên nhiên, vạn vật xung quanh để mượn sức mạnh từ họ, tạo nên quả cầu khí với sức mạnh khổng lồ vô song.',
       ),
       CharacterSkillModel(
         name: 'Tam Quy Công',

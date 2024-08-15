@@ -11,6 +11,7 @@ CharacterSkillModel _$CharacterSkillModelFromJson(Map<String, dynamic> json) =>
       name: json['name'] as String?,
       gif: json['gif'] as String?,
       type: json['type'] as String?,
+      describe: json['describe'] as String?,
     );
 
 Map<String, dynamic> _$CharacterSkillModelToJson(
@@ -19,4 +20,5 @@ Map<String, dynamic> _$CharacterSkillModelToJson(
       'name': instance.name,
       'gif': instance.gif,
       'type': instance.type,
+      'describe': instance.describe,
     };

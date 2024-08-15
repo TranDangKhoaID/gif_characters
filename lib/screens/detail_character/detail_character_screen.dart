@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:gif_skill/common/dialog_helper.dart';
 import 'package:gif_skill/common/share_color.dart';
 import 'package:gif_skill/models/character_model.dart';
 import 'package:gif_skill/models/character_skill_model.dart';
@@ -50,28 +51,33 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
               'assets/bg_gif/songoku_bg.gif',
               fit: BoxFit.cover,
             ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    widget.model.name!,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                    ),
-                  ),
-                  Text(
-                    'Son Goku (孫悟空そんごくう (Tôn Ngộ Không) Son Gokū?), tên khai sinh là Kakarot (カカロット Kakarotto?) là nhân vật chính trong series manga Dragon Ball của Toriyama Akira. Cậu là cháu trai nuôi của ông nội Gohan, chồng của Chi-Chi, bố của Gohan và Goten, ông nội của Pan và trong Dragon Ball GT là cụ cố của Goku Jr. Thầy dạy của cậu có Quy lão, Kaio và Whis. Son Goku được đánh giá là nhân vật giả tưởng mạnh nhất mọi thời đại.',
-                  ),
-                ],
-              ),
-            ),
+            _buildIntroduce(),
             _buildSkills(),
+            SizedBox(height: 15),
             _buildTransform(),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding _buildIntroduce() {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            widget.model.name!,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          Text(
+            widget.model.description!,
+          ),
+        ],
       ),
     );
   }
@@ -93,39 +99,42 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
           ),
           SizedBox(height: 10),
           skills.isNotEmpty
-              ? SizedBox(
-                  height: 250,
-                  child: GridView.builder(
-                    itemCount: skills.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      crossAxisCount: 3,
-                    ),
-                    itemBuilder: (context, index) {
-                      final skill = skills[index];
-                      return GridTile(
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                color: ShareColors.kPrimaryColor,
-                                width: 2,
-                              ),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              skill.name.toString(),
+              ? GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: skills.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 3,
+                  ),
+                  itemBuilder: (context, index) {
+                    final skill = skills[index];
+                    return GridTile(
+                      child: GestureDetector(
+                        onTap: () {
+                          DialogHelper.showWidgetOkDialog(
+                            body: _buildDialogDetailSkill(skill),
+                            context: context,
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: ShareColors.kPrimaryColor,
+                              width: 2,
                             ),
                           ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            skill.name.toString(),
+                          ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 )
               : Container(
                   margin: EdgeInsets.only(bottom: 10),
@@ -154,39 +163,42 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
           ),
           SizedBox(height: 10),
           transfroms.isNotEmpty
-              ? SizedBox(
-                  height: 250,
-                  child: GridView.builder(
-                    itemCount: transfroms.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      crossAxisCount: 3,
-                    ),
-                    itemBuilder: (context, index) {
-                      final skill = transfroms[index];
-                      return GridTile(
-                        child: GestureDetector(
-                          onTap: () {},
-                          child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              border: Border.all(
-                                color: ShareColors.kPrimaryColor,
-                                width: 2,
-                              ),
-                            ),
-                            alignment: Alignment.center,
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              skill.name.toString(),
+              ? GridView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: transfroms.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    crossAxisCount: 3,
+                  ),
+                  itemBuilder: (context, index) {
+                    final skill = transfroms[index];
+                    return GridTile(
+                      child: GestureDetector(
+                        onTap: () {
+                          DialogHelper.showWidgetOkDialog(
+                            body: _buildDialogDetailSkill(skill),
+                            context: context,
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            border: Border.all(
+                              color: ShareColors.kPrimaryColor,
+                              width: 2,
                             ),
                           ),
+                          alignment: Alignment.center,
+                          child: Text(
+                            textAlign: TextAlign.center,
+                            skill.name.toString(),
+                          ),
                         ),
-                      );
-                    },
-                  ),
+                      ),
+                    );
+                  },
                 )
               : Container(
                   margin: EdgeInsets.only(bottom: 10),
@@ -197,4 +209,44 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
       ),
     );
   }
+}
+
+Widget _buildDialogDetailSkill(CharacterSkillModel skill) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+      Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          border: Border.all(
+            color: ShareColors.kPrimaryColor,
+            width: 2,
+          ),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(13),
+          child: CachedNetworkImage(
+            imageUrl: skill.gif!,
+            fit: BoxFit.cover,
+            placeholder: (context, url) => const ShimmerImage(),
+            // errorWidget: (context, url, error) => Image.asset(
+            //   'assets/images/error_photo.png',
+            // ),
+            errorWidget: (context, url, error) => Icon(
+              Icons.error,
+            ),
+          ),
+        ),
+      ),
+      SizedBox(height: 5),
+      Text(
+        skill.name!,
+        style: TextStyle(
+          fontSize: 17,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      Text(skill.describe ?? ''),
+    ],
+  );
 }

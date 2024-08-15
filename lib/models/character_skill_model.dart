@@ -8,12 +8,14 @@ class CharacterSkillModel {
   String? name;
   String? gif;
   String? type;
+  String? describe;
 
   CharacterSkillModel({
     //required this.character_id,
     this.name,
     this.gif,
     this.type,
+    this.describe,
   });
 
   factory CharacterSkillModel.fromJson(Map<String, dynamic> json) =>
