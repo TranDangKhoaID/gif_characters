@@ -37,19 +37,22 @@ List<CharacterModel> characters = [
     description: 'Hiho',
     skills: [
       CharacterSkillModel(
-          name: 'Giới Vương Quyền',
-          gif: 'https://media.tenor.com/MiYGnIcUIisAAAAC/goku-kaio.gif',
-          type: 'skill'),
+        name: 'Giới Vương Quyền',
+        gif: 'https://media.tenor.com/MiYGnIcUIisAAAAC/goku-kaio.gif',
+        type: 'skill',
+      ),
       CharacterSkillModel(
-          name: 'Nguyên Khí Ngọc',
-          gif:
-              'https://th.bing.com/th/id/R.f2595ceedc68d4b090ade70dcf7fa53c?rik=DWaWm0IBBzEHZA&pid=ImgRaw&r=0',
-          type: 'skill'),
+        name: 'Nguyên Khí Ngọc',
+        gif:
+            'https://th.bing.com/th/id/R.f2595ceedc68d4b090ade70dcf7fa53c?rik=DWaWm0IBBzEHZA&pid=ImgRaw&r=0',
+        type: 'skill',
+      ),
       CharacterSkillModel(
-          name: 'Tam Quy Công',
-          gif:
-              'https://media1.tenor.com/images/e021e4a9bf146f7e4042f37da18286a4/tenor.gif?itemid=11776733',
-          type: 'skill'),
+        name: 'Tam Quy Công',
+        gif:
+            'https://media1.tenor.com/images/e021e4a9bf146f7e4042f37da18286a4/tenor.gif?itemid=11776733',
+        type: 'skill',
+      ),
       CharacterSkillModel(
         name: 'Thuấn gian Di động',
         gif: 'https://i.imgur.com/8JhNaJ5.gif/goku-instant-transmission.gif',
@@ -60,6 +63,48 @@ List<CharacterModel> characters = [
         gif:
             'https://th.bing.com/th/id/R.1d3d0b450e5794011936f79078c0a113?rik=BDBLEw%2bfPpOrYw&riu=http%3a%2f%2fpa1.narvii.com%2f5894%2fac5975fcbd0cd251a81500d8312c5dfc3eb28598_hq.gif&ehk=xc2xDxk%2bixVF%2bdcvCq8KA1D0TLQQitgoH4yUIRieAuA%3d&risl=&pid=ImgRaw&r=0',
         type: 'skill',
+      ),
+      CharacterSkillModel(
+        name: 'SSJ1',
+        gif:
+            'https://i.pinimg.com/originals/a1/9f/3b/a19f3b72fa903ebd7fb64553075a26ac.gif',
+        type: 'transform',
+      ),
+      CharacterSkillModel(
+        name: 'SSJ2',
+        gif:
+            'https://i.pinimg.com/originals/ce/3f/0b/ce3f0b9201c9424db5923fa71637e952.gif',
+        type: 'transform',
+      ),
+      CharacterSkillModel(
+        name: 'SSJ3',
+        gif:
+            'https://i.pinimg.com/originals/bd/26/d5/bd26d562584ec017829e49febc1d8a7d.gif',
+        type: 'transform',
+      ),
+      CharacterSkillModel(
+        name: 'SSJ4',
+        gif:
+            'https://i.pinimg.com/originals/4f/27/b2/4f27b247e4be74a8f3595d3d604687da.gif',
+        type: 'transform',
+      ),
+      CharacterSkillModel(
+        name: 'SSJGod',
+        gif:
+            'https://i.pinimg.com/originals/47/81/4b/47814b358d445cc0b6454b6325215564.gif',
+        type: 'transform',
+      ),
+      CharacterSkillModel(
+        name: 'SSJBlue',
+        gif:
+            'https://i.pinimg.com/originals/f2/74/53/f274537087bf0fef20fe24b6bb9f5cdc.gif',
+        type: 'transform',
+      ),
+      CharacterSkillModel(
+        name: 'UI',
+        gif:
+            'https://i.pinimg.com/originals/f0/66/57/f06657ea7a56f1b397a340a2c789a19f.gif',
+        type: 'transform',
       ),
     ],
   ),
