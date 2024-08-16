@@ -1,4 +1,4 @@
-package com.example.gif_skill
+package com.trankhoa2610.gif_character
 
 import io.flutter.embedding.android.FlutterActivity
 
