@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "712546475015",
+    "project_id": "gif-characters",
+    "storage_bucket": "gif-characters.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:712546475015:android:e3b98f43e52707b7559ea2",
+        "android_client_info": {
+          "package_name": "com.trankhoa2610.gif_character"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9_aJSdwACnY-lh96eQM60w8tyO2_zDmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
