@@ -5,12 +5,13 @@ part 'character_model.g.dart';
 
 @JsonSerializable()
 class CharacterModel {
-  int id;
+  String id;
   String? name;
   String? gif;
   String? avatar;
   String? description;
   List<CharacterSkillModel>? skills;
+  List<CharacterSkillModel>? transforms;
 
   CharacterModel({
     required this.id,
@@ -19,6 +20,7 @@ class CharacterModel {
     this.avatar,
     this.description,
     this.skills,
+    this.transforms,
   });
 
   factory CharacterModel.fromJson(Map<String, dynamic> json) =>
@@ -28,7 +30,7 @@ class CharacterModel {
 
 List<CharacterModel> characters = [
   CharacterModel(
-    id: 1,
+    id: "1",
     name: 'Son Goku',
     gif:
         'https://66.media.tumblr.com/4f6e8d2395f3b913a67613ba6101d568/tumblr_mpvv1jre3q1rfjowdo1_500.gif',

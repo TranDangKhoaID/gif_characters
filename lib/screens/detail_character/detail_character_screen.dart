@@ -18,23 +18,8 @@ class DetailCharacterScreen extends StatefulWidget {
 }
 
 class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
-  List<CharacterSkillModel> skills = [];
-  List<CharacterSkillModel> transfroms = [];
-
-  @override
-  void initState() {
-    skills = widget.model.skills!
-        .where(
-          (skill) => skill.type == 'skill',
-        )
-        .toList();
-    transfroms = widget.model.skills!
-        .where(
-          (skill) => skill.type == 'transform',
-        )
-        .toList();
-    super.initState();
-  }
+  // List<CharacterSkillModel> skills = [];
+  // List<CharacterSkillModel> transfroms = [];
 
   @override
   Widget build(BuildContext context) {
@@ -98,18 +83,18 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
             ),
           ),
           SizedBox(height: 10),
-          skills.isNotEmpty
+          widget.model.skills!.isNotEmpty
               ? GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: skills.length,
+                  itemCount: widget.model.skills!.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                     crossAxisCount: 3,
                   ),
                   itemBuilder: (context, index) {
-                    final skill = skills[index];
+                    final skill = widget.model.skills![index];
                     return GridTile(
                       child: GestureDetector(
                         onTap: () {
@@ -130,6 +115,9 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
                           child: Text(
                             textAlign: TextAlign.center,
                             skill.name.toString(),
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),
@@ -162,18 +150,18 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
             ),
           ),
           SizedBox(height: 10),
-          transfroms.isNotEmpty
+          widget.model.transforms!.isNotEmpty
               ? GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: transfroms.length,
+                  itemCount: widget.model.transforms!.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                     crossAxisCount: 3,
                   ),
                   itemBuilder: (context, index) {
-                    final skill = transfroms[index];
+                    final skill = widget.model.transforms![index];
                     return GridTile(
                       child: GestureDetector(
                         onTap: () {
@@ -194,6 +182,9 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
                           child: Text(
                             textAlign: TextAlign.center,
                             skill.name.toString(),
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
                           ),
                         ),
                       ),
