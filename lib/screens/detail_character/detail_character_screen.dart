@@ -37,9 +37,15 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
               fit: BoxFit.cover,
             ),
             _buildIntroduce(),
-            _buildSkills(),
+            _buildSkills(
+              name: 'Kỹ năng',
+              list: widget.model.skills!,
+            ),
             SizedBox(height: 15),
-            _buildTransform(),
+            _buildSkills(
+              name: 'Kỹ năng biến hình',
+              list: widget.model.transforms!,
+            ),
           ],
         ),
       ),
@@ -67,7 +73,10 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
     );
   }
 
-  Widget _buildSkills() {
+  Widget _buildSkills({
+    required String name,
+    required List<CharacterSkillModel> list,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 10,
@@ -76,8 +85,8 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Kỹ năng',
-            style: TextStyle(
+            name,
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -87,14 +96,14 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
               ? GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
-                  itemCount: widget.model.skills!.length,
+                  itemCount: list.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisSpacing: 10,
                     crossAxisSpacing: 10,
                     crossAxisCount: 3,
                   ),
                   itemBuilder: (context, index) {
-                    final skill = widget.model.skills![index];
+                    final skill = list[index];
                     return GridTile(
                       child: GestureDetector(
                         onTap: () {
@@ -134,110 +143,43 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
     );
   }
 
-  Widget _buildTransform() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 10,
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Kỹ năng biến hình',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
+  Widget _buildDialogDetailSkill(CharacterSkillModel skill) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            border: Border.all(
+              color: ShareColors.kPrimaryColor,
+              width: 2,
             ),
           ),
-          SizedBox(height: 10),
-          widget.model.transforms!.isNotEmpty
-              ? GridView.builder(
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  itemCount: widget.model.transforms!.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    crossAxisCount: 3,
-                  ),
-                  itemBuilder: (context, index) {
-                    final skill = widget.model.transforms![index];
-                    return GridTile(
-                      child: GestureDetector(
-                        onTap: () {
-                          DialogHelper.showWidgetOkDialog(
-                            body: _buildDialogDetailSkill(skill),
-                            context: context,
-                          );
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(15),
-                            border: Border.all(
-                              color: ShareColors.kPrimaryColor,
-                              width: 2,
-                            ),
-                          ),
-                          alignment: Alignment.center,
-                          child: Text(
-                            textAlign: TextAlign.center,
-                            skill.name.toString(),
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                )
-              : Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  alignment: Alignment.center,
-                  child: Text('Không có kỹ năng biến hình'),
-                ),
-        ],
-      ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(13),
+            child: CachedNetworkImage(
+              imageUrl: skill.gif!,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const ShimmerImage(),
+              // errorWidget: (context, url, error) => Image.asset(
+              //   'assets/images/error_photo.png',
+              // ),
+              errorWidget: (context, url, error) => Icon(
+                Icons.error,
+              ),
+            ),
+          ),
+        ),
+        SizedBox(height: 5),
+        Text(
+          skill.name!,
+          style: TextStyle(
+            fontSize: 17,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        Text(skill.describe ?? ''),
+      ],
     );
   }
-}
-
-Widget _buildDialogDetailSkill(CharacterSkillModel skill) {
-  return Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-      Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          border: Border.all(
-            color: ShareColors.kPrimaryColor,
-            width: 2,
-          ),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(13),
-          child: CachedNetworkImage(
-            imageUrl: skill.gif!,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => const ShimmerImage(),
-            // errorWidget: (context, url, error) => Image.asset(
-            //   'assets/images/error_photo.png',
-            // ),
-            errorWidget: (context, url, error) => Icon(
-              Icons.error,
-            ),
-          ),
-        ),
-      ),
-      SizedBox(height: 5),
-      Text(
-        skill.name!,
-        style: TextStyle(
-          fontSize: 17,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      Text(skill.describe ?? ''),
-    ],
-  );
 }

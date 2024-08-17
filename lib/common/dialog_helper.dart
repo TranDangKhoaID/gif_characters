@@ -145,7 +145,7 @@ class DialogHelper {
       dialogType: DialogType.noHeader,
       animType: AnimType.scale,
       title: title ?? "Thông báo",
-      btnOkText: closeBtnText ?? "Đồng ý",
+      btnOkText: closeBtnText ?? "Thoát",
       btnOkOnPress: () {
         onConfirmPress?.call();
       },
