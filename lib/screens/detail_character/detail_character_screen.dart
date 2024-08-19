@@ -25,27 +25,33 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chi tiết nhân vật'),
+        title: const Text('Chi tiết nhân vật'),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(
-              'assets/bg_gif/songoku_bg.gif',
+            CachedNetworkImage(
+              imageUrl: widget.model.avatar ?? '',
               fit: BoxFit.cover,
+              placeholder: (context, url) => const ShimmerImage(),
+              // errorWidget: (context, url, error) => Image.asset(
+              //   'assets/images/error_photo.png',
+              // ),
+              errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
             _buildIntroduce(),
             _buildSkills(
               name: 'Kỹ năng',
-              list: widget.model.skills!,
+              list: widget.model.skills ?? [],
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             _buildSkills(
               name: 'Kỹ năng biến hình',
-              list: widget.model.transforms!,
+              list: widget.model.transforms ?? [],
             ),
+            const SizedBox(height: 15),
           ],
         ),
       ),
@@ -60,7 +66,7 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
         children: [
           Text(
             widget.model.name!,
-            style: TextStyle(
+            style: const TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 20,
             ),
@@ -91,11 +97,11 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
               fontSize: 20,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           widget.model.skills!.isNotEmpty
               ? GridView.builder(
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   itemCount: list.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     mainAxisSpacing: 10,
@@ -124,9 +130,7 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
                           child: Text(
                             textAlign: TextAlign.center,
                             skill.name.toString(),
-                            style: TextStyle(
-                              fontSize: 14,
-                            ),
+                            style: const TextStyle(fontSize: 14),
                           ),
                         ),
                       ),
@@ -134,9 +138,9 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
                   },
                 )
               : Container(
-                  margin: EdgeInsets.only(bottom: 10),
+                  margin: const EdgeInsets.only(bottom: 10),
                   alignment: Alignment.center,
-                  child: Text('Không có kỹ năng nào'),
+                  child: const Text('Không có kỹ năng nào'),
                 ),
         ],
       ),
@@ -158,22 +162,22 @@ class _DetailCharacterScreenState extends State<DetailCharacterScreen> {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(13),
             child: CachedNetworkImage(
-              imageUrl: skill.gif!,
+              imageUrl: skill.gif ?? '',
               fit: BoxFit.cover,
               placeholder: (context, url) => const ShimmerImage(),
               // errorWidget: (context, url, error) => Image.asset(
               //   'assets/images/error_photo.png',
               // ),
-              errorWidget: (context, url, error) => Icon(
+              errorWidget: (context, url, error) => const Icon(
                 Icons.error,
               ),
             ),
           ),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         Text(
-          skill.name!,
-          style: TextStyle(
+          skill.name ?? '',
+          style: const TextStyle(
             fontSize: 17,
             fontWeight: FontWeight.bold,
           ),

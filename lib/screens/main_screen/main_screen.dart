@@ -35,7 +35,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> with AfterLayoutMixin {
   /// MARK: - Initials;
   final screens = [
-    CharacterScreen(),
+    CharacterScreen.provider(),
     Container(color: Colors.red),
     Container(color: Colors.amber)
   ];

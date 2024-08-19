@@ -14,6 +14,7 @@ class ShimmerImage extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
+          color: Colors.grey[400]!,
         ),
       ),
     );

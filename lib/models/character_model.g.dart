@@ -8,7 +8,7 @@ part of 'character_model.dart';
 
 CharacterModel _$CharacterModelFromJson(Map<String, dynamic> json) =>
     CharacterModel(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       name: json['name'] as String?,
       gif: json['gif'] as String?,
       avatar: json['avatar'] as String?,
