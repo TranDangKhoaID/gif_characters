@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gif_skill/screens/detail_character/detail_character_screen.dart';
-import 'package:gif_skill/screens/character_screen/character_screen.dart';
 import 'package:gif_skill/screens/main_screen/main_screen.dart';
-import 'package:gif_skill/screens/splash/splash_screen.dart';
+import 'package:gif_skill/screens/splash_screen/splash_screen.dart';
 
 class AppRoute {
   /// MARK: - Initials;

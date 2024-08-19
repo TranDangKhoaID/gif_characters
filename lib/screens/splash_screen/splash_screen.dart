@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:get/get.dart';
-import 'package:gif_skill/screens/splash/cubit/splash_cubit.dart';
+import 'package:gif_skill/screens/splash_screen/cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
   /// MARK: - Initials;
