@@ -4,17 +4,17 @@ import 'package:get/get.dart';
 import 'package:gif_skill/models/character_model.dart';
 import 'package:gif_skill/routes.dart';
 import 'package:gif_skill/screens/detail_character/detail_character_screen.dart';
-import 'package:gif_skill/screens/home/home_controller.dart';
+import 'package:gif_skill/screens/character_screen/home_controller.dart';
 import 'package:gif_skill/widgets/shimmer.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class CharacterScreen extends StatefulWidget {
+  const CharacterScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<CharacterScreen> createState() => _CharacterScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _CharacterScreenState extends State<CharacterScreen> {
   final _controller = Get.put(HomeController());
   @override
   Widget build(BuildContext context) {

@@ -1,24 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:gif_skill/screens/detail_character/detail_character_screen.dart';
-import 'package:gif_skill/screens/home/home_screen.dart';
+import 'package:gif_skill/screens/character_screen/character_screen.dart';
+import 'package:gif_skill/screens/main_screen/main_screen.dart';
 import 'package:gif_skill/screens/splash/splash_screen.dart';
 
 class AppRoute {
   /// MARK: - Initials;
   static const String splashScreen = '/splash-screen';
-  static const String homeScreen = '/home-screen';
+  static const String mainScreen = '/main-screen';
   //static const String detailCharacterScreen = '/detail-character-screen';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case splashScreen:
         return MaterialPageRoute(
-          builder: (_) => const SplashScreen(),
+          builder: (_) => SplashScreen.provider(),
           settings: settings,
         );
-      case homeScreen:
+      case mainScreen:
         return MaterialPageRoute(
-          builder: (_) => const HomeScreen(),
+          builder: (_) => MainScreen.provider(),
           settings: settings,
         );
       // case detailCharacterScreen:

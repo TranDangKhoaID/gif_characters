@@ -1,17 +1,27 @@
+import 'dart:async';
+
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:get/get.dart';
-import 'package:gif_skill/screens/splash/splash_controller.dart';
+import 'package:gif_skill/screens/splash/cubit/splash_cubit.dart';
 
 class SplashScreen extends StatefulWidget {
+  /// MARK: - Initials;
+  static BlocProvider<SplashCubit> provider() {
+    return BlocProvider(
+      create: (context) => SplashCubit(),
+      child: const SplashScreen(),
+    );
+  }
+
   const SplashScreen({super.key});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
-  final splashController = Get.put(SplashController());
-
+class _SplashScreenState extends State<SplashScreen> with AfterLayoutMixin {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
@@ -21,6 +31,8 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  // @override
-  // FutureOr<void> afterFirstLayout(BuildContext context) {}
+  @override
+  FutureOr<void> afterFirstLayout(BuildContext context) {
+    context.read<SplashCubit>().getConfigs();
+  }
 }
