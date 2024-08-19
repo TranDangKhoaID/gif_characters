@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:gif_skill/manager/theme_manager.dart';
 import 'package:gif_skill/routes.dart';
 
 class MyApp extends StatefulWidget {
@@ -19,6 +20,8 @@ class _MyAppState extends State<MyApp> {
       navigatorKey: Get.key,
       initialRoute: AppRoute.splashScreen,
       //builder: EasyLoading.init(),
+      theme: AppThemes.lightTheme,
+      darkTheme: AppThemes.darkTheme,
     );
   }
 }
