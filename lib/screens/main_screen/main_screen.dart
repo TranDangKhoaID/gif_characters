@@ -9,6 +9,8 @@ import 'package:gif_skill/common/share_color.dart';
 import 'package:gif_skill/common/share_styles.dart';
 import 'package:gif_skill/screens/character_screen/character_screen.dart';
 import 'package:gif_skill/screens/main_screen/cubit/main_cubit.dart';
+import 'package:gif_skill/screens/more_screen/more_screen.dart';
+import 'package:gif_skill/screens/setting_screen/setting_screen.dart';
 
 class MainScreen extends StatefulWidget {
   /// MARK: - Initials;
@@ -36,8 +38,8 @@ class _MainScreenState extends State<MainScreen> with AfterLayoutMixin {
   /// MARK: - Initials;
   final screens = [
     CharacterScreen.provider(),
-    Container(color: Colors.red),
-    Container(color: Colors.amber)
+    MoreScreen.provider(),
+    SettingScreen.provider(),
   ];
 
   final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
@@ -91,7 +93,7 @@ class _MainScreenState extends State<MainScreen> with AfterLayoutMixin {
                 Icons.home_filled,
                 size: 20,
               ),
-              label: 'Trang chủ',
+              label: 'Anime/Manga',
             ),
             BottomNavigationBarItem(
               icon: Icon(
